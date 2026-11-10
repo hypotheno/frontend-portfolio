@@ -1,85 +1,54 @@
 "use client";
-
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Mail, Copy, Check } from "lucide-react";
+import { site, socials } from "@/lib/site";
 
-const info = [
-  { label: "Developer", value: "Niño M. Belen" },
-  { label: "Email", value: "nbelen@gbox.ncf.edu.ph" },
-  { label: "Location", value: "Pamplona, Camarines Sur, Philippines" },
-  { label: "Project", value: "RE:BOOT - Wellness & Physical Activity Progress System" },
-];
+export default function ContactPage() {
+  const [copied, setCopied] = useState(false);
 
-export default function Contact() {
-  const [sent, setSent] = useState(false);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
-    // TODO: send to backend
-    console.log(data);
-    setSent(true);
-    form.reset();
-  }
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(site.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {}
+  };
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold">Contact Us</h1>
-        <p className="max-w-2xl text-muted-foreground">
-          Have feedback or questions about RE:BOOT? Send us a message.
-        </p>
+    <main className="mx-auto max-w-xl px-6 py-10 md:py-14">
+      <div className="fade-up flex items-center justify-between gap-3 rounded-2xl border bg-card p-5">
+        <a href={`mailto:${site.email}`} className="flex min-w-0 items-center gap-3">
+          <span className="grid size-12 place-items-center rounded-xl bg-emerald-500/15">
+            <Mail className="size-5 text-emerald-500" />
+          </span>
+          <span className="truncate text-sm font-medium">{site.email}</span>
+        </a>
+        <button
+          onClick={copy}
+          aria-label="Copy email"
+          className="grid size-10 place-items-center rounded-lg border transition hover:border-emerald-500/60"
+        >
+          {copied ? <Check className="size-4 text-emerald-500" /> : <Copy className="size-4" />}
+        </button>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Contact Information</CardTitle>
-            <CardDescription>Reach the RE:BOOT team</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <dl className="space-y-4">
-              {info.map((i) => (
-                <div key={i.label}>
-                  <dt className="text-sm text-muted-foreground">{i.label}</dt>
-                  <dd className="font-medium">{i.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Send a message</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" name="message" rows={5} required />
-              </div>
-              <Button type="submit">Send</Button>
-              {sent && (
-                <p className="text-sm text-green-600">Thanks! Your message has been sent.</p>
-              )}
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+      <ul className="fade-up mt-4 grid grid-cols-3 gap-4" style={{ animationDelay: "100ms" }}>
+        {socials.map((s) => (
+          <li key={s.name}>
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.name}
+              title={s.name}
+              className="grid aspect-square place-items-center rounded-2xl border bg-card transition hover:-translate-y-1 hover:border-emerald-500/60"
+            >
+              <img src={s.icon} alt={s.name} className={`size-9 ${s.mono ? "dark:invert" : ""}`} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 }

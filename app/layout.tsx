@@ -6,9 +6,9 @@ import Navbar from "@/components/Navbar";
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
 export const metadata: Metadata = {
-  title: "Niño M. Belen | Portfolio",
+  title: "PawNino | Portfolio",
   description:
-    "Personal portfolio of Niño M. Belen, featuring RE:BOOT, education, and hobbies.",
+    "Personal portfolio of Niño M. Belen (PawNino), featuring RE:BOOT, education, and hobbies.",
 };
 
 const themeScript = `
@@ -31,11 +31,9 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
         <Navbar />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
-          {children}
-        </main>
+        <div className="flex-1">{children}</div>
         <footer className="border-t py-6 text-center text-sm text-muted-foreground">
-          © 2026 Niño M. Belen · Built with Next.js &amp; shadcn/ui
+          © 2026 PawNino
         </footer>
       </body>
     </html>
