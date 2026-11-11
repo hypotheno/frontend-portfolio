@@ -1,6 +1,8 @@
 import {
-  UserRound, Target, Dumbbell, ClipboardList, TrendingUp,
-  Gamepad2, Code, Footprints, Headphones,
+  UserRound, Target, Dumbbell, ClipboardList, TrendingUp, Gamepad2, Code,
+  Footprints, Headphones, MapPin, GraduationCap, Languages, Cake, Quote,
+  Coffee, FileSpreadsheet, FileText, Calculator, Lightbulb, Table as TableIcon,
+  ImageIcon,
 } from "lucide-react";
 
 const devicon = (p: string) =>
@@ -13,11 +15,11 @@ export const site = {
   name: "Niño M. Belen",
   role: "BSIT Student · Web Developer",
   school: "Naga College Foundation Inc.",
-  email: "nbelen@gbox.ncf.edu.ph", // TODO
+  email: "nbelen@gbox.ncf.edu.ph",
   avatar: "/profile.jpg",
 };
 
-// mono: true = black icon, nagiging puti sa dark mode
+/* ---------------- TOOLS & PROJECT (same as before) ---------------- */
 export const tools = [
   { name: "Next.js", icon: devicon("nextjs/nextjs-original.svg"), mono: true },
   { name: "React", icon: devicon("react/react-original.svg") },
@@ -35,7 +37,7 @@ export const project = {
   outcome: "Turns sedentary habits into tracked, visible progress.",
   image: "/about/workout.jpg",
   github: "https://github.com/hypotheno/REBOOT",
-  live: "", // TODO: ilagay ang Vercel link ng RE:BOOT; kapag walang laman, hindi lalabas ang button
+  live: "", // TODO: Vercel link ng RE:BOOT
   outcomes: [
     { icon: UserRound, label: "Profiles" },
     { icon: Target, label: "Goals" },
@@ -48,45 +50,192 @@ export const project = {
   ),
 };
 
-// Idagdag ang mas maraming photos sa /public/about at ilagay dito
+/* ---------------- ABOUT: GALLERY ---------------- */
+// Dagdagan ng photos sa /public/about
 export const gallery = [
   { src: "/about/coding.jpg", caption: "Coding", className: "col-span-2 row-span-2" },
   { src: "/about/workout.jpg", caption: "Workout", className: "" },
   { src: "/about/healthy.jpg", caption: "Healthy", className: "" },
   { src: "/profile.jpg", caption: "Me", className: "col-span-2" },
+  { src: "/about/bicep.jpg", caption: "Bicep", className: "col-span-2 row-span-2" },
+  { src: "/about/progress.jpg", caption: "Progress", className: "col-span-2 row-span-2" },
+  { src: "/about/backmcle.jpg", caption: "BackMuscle", className: "col-span-4 row-span-6" },
 ];
 
-// TODO: palitan ng totoong favorites mo. Optional ang cover (e.g. "/songs/a.jpg")
-export const songs = [
-  { title: "Consume", artist: "Artist", cover: "Chase Atlantic" },
-  { title: "Favorite Song 2", artist: "Artist", cover: "" },
-  { title: "Favorite Song 3", artist: "Artist", cover: "" },
-  { title: "Favorite Song 4", artist: "Artist", cover: "" },
+/* ---------------- ABOUT: ALL ABOUT ME ---------------- */
+export const bio =
+  "BSIT student who turns ideas into clean, useful web apps."; // TODO: palitan
+
+export const facts = [
+  { icon: MapPin, label: "From", value: "Del Rosario, Pamplona, Camarines Sur" }, // TODO
+  { icon: GraduationCap, label: "Course", value: "BSIT · NCF" },
+  { icon: Cake, label: "Birthday", value: "December 25, 2005" }, // TODO
+  { icon: Languages, label: "Languages", value: "Bikol · Filipino · English" }, // TODO
+  { icon: Code, label: "Learning", value: "Next.js · MySQL" }, // TODO
+  { icon: Target, label: "Goal", value: "Become a full-stack developer" }, // TODO
+  { icon: Coffee, label: "Fuel", value: "Chess & music" }, // TODO
+  { icon: Quote, label: "Motto", value: "Better habits, stronger you." }, // TODO
 ];
 
-// Rename mo ang files sa /public/logos para tumugma, o palitan ang paths dito
+/* ---------------- ABOUT: SIDE HUSTLE ---------------- */
+export const services = [
+  {
+    icon: TrendingUp,
+    title: "Data Analyst",
+    subtitle: "Statistical Consultant",
+    skills: [
+      { icon: FileSpreadsheet, label: "Excel" },
+      { icon: Calculator, label: "Computations" },
+      { icon: Lightbulb, label: "Interpretation" },
+    ],
+  },
+  {
+    icon: FileText,
+    title: "Thesis Formatter",
+    subtitle: "Document Specialist",
+    skills: [
+      { icon: FileText, label: "Word" },
+      { icon: TableIcon, label: "Tables" },
+      { icon: ImageIcon, label: "Figures" },
+    ],
+  },
+];
+
+/* ---------------- ABOUT: FAVORITE MUSIC ---------------- */
+export type Song = {
+  title: string;
+  artist: string;
+  cover?: string;   // "/music/consume.jpg" (file sa public/music)
+  audio?: string;   // "/music/consume.mp3" -> custom player
+  spotify?: string; // Spotify track ID -> embed player + auto cover
+};
+
+export const songs: Song[] = [
+  { title: "Consume", artist: "Chase Atlantic", spotify: "0X2bh8NVQ8svDQIn2AdCbW" }, // TODO
+  { title: "Ultraviolence", artist: "Lana Del Rey", spotify: "1y3r6RXiJZNBV1EI0NggpS" }, // TODO
+  { title: "The Morning", artist: "The Weeknd", spotify: "6u0dQik0aif7FQlrhycG1L" }, // TODO
+  { title: "Right and a Wrong Way", artist: "Keith Sweat", spotify: "6gTWAUYQMAQV3Cw2t5kWrx" }, // TODO
+];
+
+/* ---------------- ABOUT: FAVORITE GAMES ---------------- */
 export const games = [
-  { name: "Call of Duty: Mobile", logo: "/logos/codm.webp" },
-  { name: "Mobile Legends", logo: "/logos/ml.png" },
+  {
+    name: "Call of Duty: Mobile",
+    logo: "/logos/codm.webp",
+    genre: "FPS",
+    ign: "NiNU", // TODO
+    rank: "Grandmaster", // TODO
+    since: "2020", // TODO
+    fav: "Shotgun / Multiplayer", // TODO
+  },
+  {
+    name: "Mobile Legends",
+    logo: "/logos/ml.png",
+    genre: "MOBA",
+    ign: "Consume", // TODO
+    rank: "Mythical Immortal(216 star)", // TODO
+    since: "2018", // TODO
+    fav: "Main hero - Khufra / role - Roamer", // TODO
+  },
+  {
+    name: "Honor of Kings",
+    logo: "/logos/hok.png",
+    genre: "MOBA",
+    ign: "NiNU", // TODO
+    rank: "Master", // TODO
+    since: "2025", // TODO
+    fav: "Main hero - Musashi / Any Role", // TODO
+  },
+  {
+    name: "Chess.com",
+    logo: "/logos/chess.jpeg",
+    genre: "Strategy",
+    ign: "NiNUUH", // TODO
+    rank: "Blitz-1172 | Rapid-1864 | Bullet-1755", // TODO
+    since: "2024", // TODO
+    fav: "Blitz / Rapid"
+  },
 ];
 
+/* ---------------- EDUCATION ---------------- */
+// TODO: i-check ang totoong filenames sa public/logos
 export const education = [
-  { logo: "/logos/dr-elementary.jpeg", school: "Del Rosario Elementary School", level: "Elementary", years: "20XX – 20XX" },
-  { logo: "/logos/del-rosario.jpeg", school: "Del Rosario National High School", level: "Junior High", years: "20XX – 20XX" },
-  { logo: "/logos/pamplona.jpeg", school: "Pamplona NationalSchool", level: "Senior High", years: "20XX – 20XX" },
-  { logo: "/logos/ncf.jpeg", school: "Naga College Foundation Inc.", level: "BSIT", years: "20XX – Present" },
+  {
+    logo: "/logos/dr-elementary.png",
+    school: "Del Rosario Elementary School",
+    level: "Elementary",
+    years: "2013 – 2018",
+    place: "Del Rosario, Pamplona, Camarines Sur",
+    highlights: ["Achievers", "Kab Scouts", "Representative of CHESS 2nd congressional district in the division meet"],
+  },
+  {
+    logo: "/logos/del-rosario-.jpeg",
+    school: "Del Rosario National High School",
+    level: "Junior High",
+    years: "2019 – 2022",
+    place: "Del Rosario, Pamplona, Camarines Sur",
+    highlights: ["With Honor", "Representative of CHESS Pamplona district in the 2nd Congressional meet"],
+  },
+  {
+    logo: "/logos/pamplona.jpeg",
+    school: "Pamplona National School",
+    level: "Senior High",
+    years: "2023 – 2024",
+    place: "Poblacion, Pamplona, Camarines Sur",
+    highlights: ["ICT - Computer System Servicing", "With High Honor"],
+  },
+  {
+    logo: "/logos/ncf.jpeg",
+    school: "Naga College Foundation Inc.",
+    level: "BSIT",
+    years: "2025 – Present",
+    place: "Naga City, Camarines Sur",
+    highlights: ["Built RE:BOOT", "Dean Lister", "Representative of CHESS College of Computer Studies department"],
+  },
 ];
 
+/* ---------------- HOBBIES ---------------- */
 export const hobbies = [
-  { icon: Gamepad2, label: "Gaming" },
-  { icon: Code, label: "Coding" },
-  { icon: Footprints, label: "Running" },
-  { icon: Dumbbell, label: "Fitness" },
-  { icon: Headphones, label: "Music" },
+  {
+    icon: Gamepad2,
+    label: "Gaming",
+    tagline: "Where I unwind and compete.",
+    since: "2019",
+    facts: ["CODM and Mobile Legends are my main games", "I play for teamwork and strategy", "Improve my communication skills"],
+  },
+  {
+    icon: Code,
+    label: "Coding",
+    tagline: "Turning ideas into working apps.",
+    since: "2026",
+    facts: ["Built RE:BOOT with Next.js and MySQL", "Currently learning more full-stack", "Improve my problem-solving skills"],
+  },
+  {
+    icon: Footprints,
+    label: "Running",
+    tagline: "Clears my head after long screen time.",
+    since: "2024",
+    facts: ["Favorite route or place", "4 km", "Improve my endurance and stamina"],
+  },
+  {
+    icon: Dumbbell,
+    label: "Fitness",
+    tagline: "Better habits, stronger me.",
+    since: "2023",
+    facts: ["Push, Pull, and Legs", "Bulking", "Improve my strength and muscle mass"],
+  },
+  {
+    icon: Headphones,
+    label: "Music",
+    tagline: "Always has a playlist on.",
+    since: "Always",
+    facts: ["Mood/Dark R&B", "Alternative", "Cinematic Pop"],
+  },
 ];
 
+/* ---------------- CONTACT ---------------- */
 export const socials = [
   { name: "GitHub", href: "https://github.com/hypotheno", icon: simple("github"), mono: true },
-  { name: "Facebook", href: "https://facebook.com/", icon: simple("facebook", "1877F2") }, // TODO
-  { name: "LinkedIn", href: "https://linkedin.com/in/", icon: simple("linkedin", "0A66C2") }, // TODO
+  { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61590484050688", icon: simple("facebook", "1877F2") }, // TODO
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/niño-belen-a1ba0744a", icon: devicon("linkedin/linkedin-original.svg") }, // TODO
 ];

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import GalaxyBackground from "@/components/GalaxyBackground";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
@@ -30,9 +31,10 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        <GalaxyBackground />
         <Navbar />
-        <div className="flex-1">{children}</div>
-        <footer className="border-t py-6 text-center text-sm text-muted-foreground">
+        <div className="relative z-10 flex-1">{children}</div>
+        <footer className="relative z-10 border-t py-6 text-center text-sm text-muted-foreground">
           © 2026 PawNino
         </footer>
       </body>

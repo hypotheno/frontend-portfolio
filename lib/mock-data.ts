@@ -10,7 +10,7 @@ import type {
 export const currentUser: User = {
   user_id: 1,
   full_name: "Niño M. Belen",
-  email: "nino@example.com",
+  email: "nbelen@gbox.ncf.edu.ph",
   weight_kg: 65,
   height_cm: 170,
   created_at: "2026-11-01",
